@@ -39,7 +39,7 @@ public class Inputs extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String Fname, Lname, firstN, lastN, ID, companyName="";
+		String Fname, Lname, firstN, lastN, ID, companyName="", coID;
 		Fname= request.getParameter("Fname");
         Lname= request.getParameter("Lname");
 		
@@ -67,7 +67,7 @@ public class Inputs extends HttpServlet {
     		}
          
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("select ID,FIRSTNAME,LASTNAME from UserInfo where lastname Like '" + Lname +"%'");
+            ResultSet rs = stmt.executeQuery("select ID,FIRSTNAME,LASTNAME from UserInfo where lastname Like '%" + Lname +"%'");
        
         output+="<table border=2 color=white>";
         output+="<tr><th>First Name </th><th>Last Name</th></tr> ";   
@@ -93,17 +93,20 @@ public class Inputs extends HttpServlet {
 		}
        
        Statement stmt2 = conn.createStatement();
-       System.out.println("select Company from Companies where company Like '" + Lname +"%'");
-       ResultSet rs2 = stmt2.executeQuery("select Company from Companies where company Like '" + Lname +"%'");
-       output2+="<p></p><table alight=center border=1 color=white bgcolor=white>";
+       System.out.println("select COMPANYID, Company from Companies where company Like '%" + Lname +"%'");
+       ResultSet rs2 = stmt2.executeQuery("select COMPANYID,Company from Companies where company Like '%" + Lname +"%'");
+       
+       
+       output2+="<p></p><table border=1 color=white bgcolor=white>";
        output2+="<tr><th>Company Names</th></tr> ";
        
        //System.out.println(rs2.getRow());
        while(rs2.next())
        {
     	   companyName=rs2.getString("COMPANY");
-    	   output2+= "<tr><td>" + companyName +"</td></tr>";
-    	   System.out.println(companyName);
+    	   coID=rs2.getString("CompanyID");
+    	   output2+= "<tr><td><a href= DetailServlet?companyID="+ coID + ">"+ companyName +"</a></td></tr>";
+    	
        }
        conn.close();
        

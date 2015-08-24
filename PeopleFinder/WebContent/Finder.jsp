@@ -3,6 +3,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<style>
+a:link {    /* unvisited link */color: black; text-decoration: none}
+a:visited {    /* visited link */color: black;}
+a:hover {    /* mouse over link */color: red; text-decoration: underline;}
+a:active {    /* active link */color: black;}
+</style>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>People Finder</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -13,7 +19,7 @@
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
+      <div class="text-center">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -21,7 +27,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">People Finder</a>
+          <a class="navbar-brand">People Finder</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
         </div>
@@ -29,11 +35,11 @@
     </nav>
 <br />
 <br />
-    <div class="container">
+    <div class="text-center">
     <p></p>
         <p class="lead">Please complete all necessary fields.</p>
       </div>
-<form action="Inputs" method="post">
+<form class= "text-center" action="Inputs"  method="post">
 First name (Uppercase):<br>
 <input type="text" placeholder= "ex. John" name="Fname"> </input><br>
 <br>
